@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><!-- i18n:switcher --><style data-i18n-sw>.i18n-pick{display:inline-flex;align-items:center;gap:4px;margin:0 8px;font:inherit;font-size:13px;white-space:nowrap}.i18n-pick select{font:inherit;font-size:13px;padding:3px 6px;border-radius:8px;border:1px solid var(--rule,rgba(128,128,128,.5));background:var(--panel,Canvas);color:var(--text,CanvasText)}.i18n-pick.float{position:fixed;top:calc(8px + env(safe-area-inset-top,0px));right:max(8px,env(safe-area-inset-right,0px));z-index:9998}#i18nBanner{position:fixed;right:max(14px,env(safe-area-inset-right,0px));bottom:max(14px,env(safe-area-inset-bottom,0px));z-index:9999;font:14px/1.3 var(--font,system-ui,sans-serif)}#i18nBanner>button{border-radius:999px;padding:9px 14px;border:1px solid var(--rule,#363a52);background:var(--panel,#1c1e2d);color:var(--text,#eceaf3);box-shadow:0 4px 14px rgba(0,0,0,.35);cursor:pointer;font:inherit}#i18nBanner ul{position:absolute;right:0;bottom:calc(100% + 8px);margin:0;padding:6px;list-style:none;min-width:150px;border-radius:12px;border:1px solid var(--rule,#363a52);background:var(--panel,#1c1e2d);box-shadow:0 8px 24px rgba(0,0,0,.4)}#i18nBanner ul[hidden]{display:none}#i18nBanner a{display:block;padding:7px 10px;border-radius:8px;color:var(--text,#eceaf3);text-decoration:none}#i18nBanner a:hover,#i18nBanner a:focus-visible{background:var(--panel2,#25283a)}#i18nBanner a[aria-current]{color:var(--amber,#f1b646);font-weight:700}@media print{#i18nBanner,.i18n-pick{display:none!important}}</style><script data-i18n-skip>(function(){var C={"langs": [["ko", "한국어"], ["en", "English"], ["zh", "中文"], ["ja", "日本語"], ["uz", "Oʻzbekcha"], ["ru", "Русский"], ["vi", "Tiếng Việt"]], "urls": {"ko": "index.html", "en": "index.en.html", "zh": "index.zh.html", "ja": "index.ja.html", "uz": "index.uz.html", "ru": "index.ru.html", "vi": "index.vi.html"}, "cur": "ja", "auto": true, "key": "aitext_lang", "hosts": [["#langSw", "append"], ["nav.top .logo", "after"], ["nav.top", "append"], ["nav", "append"]], "banner": true, "select": true},cur=C.cur,ok={},de=document.documentElement;C.langs.forEach(function(l){ok[l[0]]=1});
+function U(l){return C.urls[l]}
+function save(l){try{localStorage.setItem(C.key,l)}catch(e){}}
+function saved(){try{return localStorage.getItem(C.key)}catch(e){return null}}
+function go(l){location.replace(U(l)+'?lang='+l+location.hash)}
+var shown=function(){de.style.visibility=''};
+function tryGo(l){if(location.protocol==='file:'){go(l);return}
+ de.style.visibility='hidden';var t=setTimeout(shown,2500);
+ try{fetch(U(l),{method:'HEAD',cache:'no-store'}).then(function(r){if(r.ok)go(l);else{clearTimeout(t);shown()}},function(){clearTimeout(t);shown()})}catch(e){clearTimeout(t);shown()}}
+var q=null;try{q=new URLSearchParams(location.search).get('lang')}catch(e){}
+if(q&&ok[q]){save(q);if(q!==cur){tryGo(q);}}
+else if(cur==='ko'&&C.auto){var s=saved(),to=null;
+ if(s&&ok[s]){if(s!=='ko')to=s;}
+ else if(location.protocol!=='file:'){var same=false;try{same=!!document.referrer&&new URL(document.referrer).origin===location.origin}catch(e){}
+  if(!same){var nav=(navigator.languages||[navigator.language||'']).map(function(x){return String(x).slice(0,2).toLowerCase()});
+   for(var i=0;i<nav.length;i++){if(nav[i]==='ko')break;if(ok[nav[i]]){to=nav[i];break;}}}}
+ if(to)tryGo(to);}
+function pick(l){save(l);location.href=U(l)+'?lang='+l+location.hash;}
+function name(l){for(var i=0;i<C.langs.length;i++)if(C.langs[i][0]===l)return C.langs[i][1];return l}
+function mount(){if(document.getElementById('i18nSel'))return;
+ if(C.select){var w=document.createElement('span');w.className='i18n-pick';w.innerHTML='<span aria-hidden="true">🌐</span>';
+  var s=document.createElement('select');s.id='i18nSel';s.setAttribute('aria-label','Language');
+  C.langs.forEach(function(l){var o=document.createElement('option');o.value=l[0];o.textContent=l[1];if(l[0]===cur)o.selected=true;s.appendChild(o);});
+  s.addEventListener('change',function(){pick(s.value)});w.appendChild(s);var put=false;
+  for(var i=0;i<C.hosts.length&&!put;i++){var h=document.querySelector(C.hosts[i][0]);if(!h)continue;var m=C.hosts[i][1];
+   if(m==='after')h.insertAdjacentElement('afterend',w);else if(m==='before')h.insertAdjacentElement('beforebegin',w);else h.appendChild(w);put=true;}
+  if(!put){w.classList.add('float');document.body.appendChild(w);}}
+ if(C.banner&&!document.getElementById('i18nBanner')){var b=document.createElement('div');b.id='i18nBanner';
+  var bt=document.createElement('button');bt.type='button';bt.setAttribute('aria-haspopup','true');bt.setAttribute('aria-expanded','false');bt.textContent='🌐 '+name(cur);
+  var ul=document.createElement('ul');ul.hidden=true;ul.setAttribute('role','menu');
+  C.langs.forEach(function(l){var li=document.createElement('li'),a=document.createElement('a');a.href=U(l[0])+'?lang='+l[0];a.textContent=l[1];a.lang=l[0];a.setAttribute('role','menuitem');
+   if(l[0]===cur)a.setAttribute('aria-current','true');a.addEventListener('click',function(e){e.preventDefault();pick(l[0])});li.appendChild(a);ul.appendChild(li);});
+  function close(){ul.hidden=true;bt.setAttribute('aria-expanded','false')}
+  bt.addEventListener('click',function(e){e.stopPropagation();ul.hidden=!ul.hidden;bt.setAttribute('aria-expanded',String(!ul.hidden))});
+  document.addEventListener('click',function(e){if(!b.contains(e.target))close()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){close();bt.focus&&!ul.hidden&&bt.focus()}});
+  b.appendChild(ul);b.appendChild(bt);document.body.appendChild(b);}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();})();</script><!-- /i18n:switcher -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI文章が読みにくい理由 · 目次</title>
+<meta name="description" content="AIが書いた文章はなぜ読みにくいのか — Clark·Martin·Mahowald(2026) 論文を Ahn Sangsun がレビューしたインタラクティブ解説です。博士・助手（ハル）・ショウジョウバエ研究員・アバボットが進行します。">
+<meta name="author" content="Ahn Sangsun">
+<meta property="og:title" content="AIが書いた文章はなぜ読みにくいのか">
+<meta property="og:description" content="AIモデル14種の文章を分析した論文を、韓国語の読者向けに解き直した解説">
+<meta property="og:image" content="og_07.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#13141f;--panel:#1c1e2d;--panel2:#25283a;--rule:#363a52;--text:#eceaf3;--muted:#9d9bb8;
+  --gfp:#5ee39c;--stain:#d672d6;--amber:#f1b646;--eye:#f0604d;--info:#82b8ff;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.75 "IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",system-ui,sans-serif;word-break:keep-all;overflow-wrap:break-word}
+a{color:var(--info)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+nav.top{position:sticky;top:0;z-index:50;height:54px;display:flex;align-items:center;gap:14px;padding:0 16px;background:rgba(19,20,31,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--rule);overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+nav.top::-webkit-scrollbar{display:none}
+nav.top .logo{font-weight:700;color:var(--text);text-decoration:none}
+nav.top a{color:var(--muted);text-decoration:none;font-size:14px}
+.cover{position:relative;width:100%;margin:0;background:linear-gradient(160deg,#1b1533,#13141f);aspect-ratio:16/9;max-height:72vh;overflow:hidden;border-bottom:1px solid var(--rule)}
+.cover img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.cover-chip{position:absolute;right:16px;bottom:14px;padding:4px 10px;border-radius:999px;background:rgba(19,20,31,.72);font-size:13px}
+@media (max-width:600px){.cover{max-height:none}.cover-chip{font-size:11px;padding:2px 8px;bottom:8px;right:8px}}
+header.intro{padding:40px 0 24px}
+.eyebrow{font-size:13px;color:var(--muted)}
+h1{font-size:clamp(30px,5vw,50px);line-height:1.2;margin:.25em 0 .35em}
+h2{font-size:clamp(22px,3vw,30px);margin:0 0 .5em}
+.lead{font-size:18px;max-width:720px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}
+.kpi{background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:12px 14px}
+.kpi b{display:block;font-size:24px;line-height:1.2;font-variant-numeric:tabular-nums}
+.kpi span{font-size:13px;color:var(--muted)}
+.kpi.g b{color:var(--gfp)}.kpi.m b{color:var(--stain)}.kpi.a b{color:var(--amber)}
+section{padding:32px 0;border-top:1px solid var(--rule)}
+.card{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:18px;background:var(--panel);border:1px solid var(--rule);border-radius:18px;overflow:hidden;text-decoration:none;color:var(--text)}
+.card:hover{border-color:var(--gfp)}
+.card img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:3/2}
+.card .body{padding:16px 18px 18px 0}
+.card .no{font-size:13px;color:var(--gfp);font-weight:700}
+.card h3{margin:.2em 0 .4em;font-size:21px;line-height:1.35}
+.card p{margin:.3em 0;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tags span{font-size:12px;border:1px solid var(--rule);border-radius:999px;padding:2px 10px;color:var(--muted)}
+.go{display:inline-block;margin-top:12px;background:var(--gfp);color:#10221a;font-weight:700;border-radius:999px;padding:6px 16px;font-size:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.box{background:var(--panel);border:1px solid var(--rule);border-radius:14px;padding:14px 16px}
+.box h3{margin:.1em 0 .4em;font-size:16px;color:var(--amber)}
+.box ul{margin:.2em 0;padding-left:1.2em}
+.cast{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.cast span{font-size:13px;background:var(--panel2);border-radius:999px;padding:3px 12px}
+footer{padding:32px 0 80px;color:var(--muted);font-size:14px;border-top:1px solid var(--rule)}
+@media (max-width:760px){.card{grid-template-columns:1fr}.card .body{padding:0 16px 18px}.grid2{grid-template-columns:1fr}}
+@media (max-width:460px){.kpis{grid-template-columns:repeat(2,1fr)}}
+</style>
+<link rel="alternate" hreflang="ko" href="index.html"><link rel="alternate" hreflang="en" href="index.en.html"><link rel="alternate" hreflang="zh-CN" href="index.zh.html"><link rel="alternate" hreflang="ja" href="index.ja.html"><link rel="alternate" hreflang="uz" href="index.uz.html"><link rel="alternate" hreflang="ru" href="index.ru.html"><link rel="alternate" hreflang="vi" href="index.vi.html"><link rel="alternate" hreflang="x-default" href="index.html"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap"><style data-i18n-font>body,button,input,select,textarea{font-family:"Noto Sans JP",system-ui,sans-serif}</style><style data-i18n-cjk>*{word-break:normal!important;line-break:strict}h1,h2,h3{word-break:auto-phrase!important}</style>
+</head>
+<body>
+<nav class="top" aria-label="ショートカット">
+  <a class="logo" href="#top">🔬 AI研究室</a>
+  <a href="#list">編一覧</a><a href="#inside">収録内容</a><a href="#source">原論文</a>
+</nav>
+
+<!-- lab-cover -->
+<header class="cover" id="top" data-img="cover_index">
+  <img src="cover_index.webp" onerror="this.onerror=null;this.src='cover_07.webp'" width="1600" height="900" alt="夜の研究室で、博士・助手（ハル）・ショウジョウバエ研究員・アバボットが集まったシリーズの表紙" fetchpriority="high" decoding="async">
+  <span class="cover-chip">AI研究室 解説ダッシュボード · 07</span>
+</header>
+<!-- /lab-cover -->
+
+<div class="wrap">
+<header class="intro">
+  <div class="eyebrow">AI研究室 解説ダッシュボード · 論文レビュー Ahn Sangsun · 原論文 Clark, Martin &amp; Mahowald (2026)</div>
+  <h1>AIが書いた文章は<br>なぜ読みにくいのか</h1>
+  <p class="lead">文法は合っているのに、なぜ二度読むことになるのでしょうか？ 最新のAIモデル14種が書いた会話・コーディング回答・エッセイを分析した論文を、韓国語の読者向けに解き直しました。実際に実験を動かしながら読むインタラクティブ解説です。</p>
+  <div class="kpis">
+    <div class="kpi g"><b>14</b><span>分析したAIモデル</span></div>
+    <div class="kpi m"><b>6</b><span>読みにくい癖</span></div>
+    <div class="kpi a"><b>7</b><span>言語で読む</span></div>
+  </div>
+</header>
+
+<section id="list">
+  <h2>編一覧</h2>
+  <a class="card" href="07_ai_text_readability.html">
+    <img src="thumb_07.webp" width="600" height="400" alt="会計室で、アバボットとショウジョウバエ研究員が短いメモを挟んで向き合っている場面" loading="lazy" decoding="async">
+    <div class="body">
+      <div class="no">第07編 · 論文レビュー</div>
+      <h3>AIが書いた文章はなぜ読みにくいのか — 文字罰金がつくった文体</h3>
+      <p>AIの文章に多い6つの癖、往復翻訳で見つけた証拠、文字ペナルティ実験室、そして「一律に短く vs 文脈に応じて」の対決まで。</p>
+      <div class="tags"><span>処理負担</span><span>対の距離</span><span>往復翻訳</span><span>文字ペナルティ λ</span><span>事後訓練</span></div>
+      <span class="go">解説を開く →</span>
+    </div>
+  </a>
+</section>
+
+<section id="inside">
+  <h2>収録内容</h2>
+  <div class="grid2">
+    <div class="box"><h3>解説ページ</h3><ul>
+      <li>質問 → 方法 → 6つの癖 → 往復翻訳 → モデルの違い → 実験室 → 対決</li>
+      <li>韓国語で読み直す: 箇条書き・行政名詞・翻訳調と比べる、チェックリスト</li>
+      <li>確認クイズと用語の吹き出し</li></ul></div>
+    <div class="box"><h3>持ち帰れるもの</h3><ul>
+      <li>知識索引: 概念・方法・主張を検索し、関係グラフで見る</li>
+      <li>エクスポート: JSON-LD, Turtle, CSV, BibTeX, RIS をダウンロード</li>
+      <li>7言語: 韓国語, English, 中文, 日本語, Oʻzbekcha, Русский, Tiếng Việt</li></ul></div>
+  </div>
+  <div class="box" style="margin-top:12px"><h3>登場キャラクター</h3>
+    <div class="cast"><span>博士 — 解説と判定</span><span>助手（ハル） — 実験と数字</span><span>ショウジョウバエ研究員 — 疑う側</span><span>アバボット — 肩入れする側</span></div></div>
+</section>
+
+<section id="source">
+  <h2>原論文</h2>
+  <p>Clark, T. H., Martin, M. B., &amp; Mahowald, K. (2026). <i>Why is AI-generated language so hard to understand?</i> arXiv preprint arXiv:2610.29162v1. <a href="https://arxiv.org/abs/2610.29162">https://arxiv.org/abs/2610.29162</a> (CC BY 4.0)</p>
+  <p class="eyebrow">論文は英語の文章だけを分析しました。解説中の韓国語の例文は説明用であり、測定された結果ではありません。</p>
+</section>
+</div>
+
+<footer>
+<div class="wrap">
+  <p>文 · Ahn Sangsun (株式会社M-Robo 代表) · <a href="https://adminmrobo.github.io/who_am_i/who_am_i.html">著者紹介</a> · このリポジトリ: <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.ja">CC BY-NC 4.0</a></p>
+  <p>キャラクター画: 博士・助手（ハル）・ショウジョウバエ研究員・アバボット — <a href="https://adminmrobo.github.io/fruitfly-lab-expressions/">fruitfly-lab-expressions</a>, © Ahn Sangsun</p>
+</div>
+</footer>
+</body>
+</html>

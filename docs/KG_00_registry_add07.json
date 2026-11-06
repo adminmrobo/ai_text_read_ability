@@ -1,0 +1,421 @@
+{
+  "registry": "KG_00_registry",
+  "version": "0.1-add07",
+  "added_by_page": "07_ai_text_readability",
+  "note": "07번 페이지에서 새로 생긴 ID. 기존 등록부가 제공되지 않아 전부 새 ID로 적었다. 기존 등록부와 합칠 때 같은 개념이 있으면 기존 ID를 우선한다.",
+  "concepts": [
+    {
+      "id": "lab:work/clark2026why",
+      "type": "Work",
+      "ko": "Clark·Martin·Mahowald (2026)",
+      "en": "Why is AI-generated language so hard to understand?"
+    },
+    {
+      "id": "lab:question/why-hard",
+      "type": "Question",
+      "ko": "AI 글은 왜 두 번 읽힐까?",
+      "en": "Why is AI text hard to understand?"
+    },
+    {
+      "id": "lab:question/duel",
+      "type": "Question",
+      "ko": "읽는 사람을 생각하지 않고 무조건 짧게 쓰면 이득일까?",
+      "en": "Is always choosing the shorter form a win?"
+    },
+    {
+      "id": "lab:question/korean",
+      "type": "Question",
+      "ko": "한국어 AI 글에도 같은 일이 일어날까?",
+      "en": "Does the same happen in Korean?"
+    },
+    {
+      "id": "lab:question/frontier-cause",
+      "type": "Question",
+      "ko": "최신 모델에서 실제 원인은 무엇인가?",
+      "en": "What actually causes it in frontier models?"
+    },
+    {
+      "id": "lab:concept/processing-difficulty",
+      "type": "Concept",
+      "ko": "처리 부담",
+      "en": "processing difficulty"
+    },
+    {
+      "id": "lab:concept/working-memory",
+      "type": "Concept",
+      "ko": "작업 기억",
+      "en": "working memory"
+    },
+    {
+      "id": "lab:concept/information-density",
+      "type": "Concept",
+      "ko": "정보 밀도",
+      "en": "information density"
+    },
+    {
+      "id": "lab:concept/uid",
+      "type": "Concept",
+      "ko": "균일 정보 밀도",
+      "en": "uniform information density (UID)"
+    },
+    {
+      "id": "lab:concept/communicative-efficiency",
+      "type": "Concept",
+      "ko": "소통 효율",
+      "en": "communicative efficiency"
+    },
+    {
+      "id": "lab:concept/syntactic-alternation",
+      "type": "Concept",
+      "ko": "같은 뜻 두 표현",
+      "en": "syntactic alternation"
+    },
+    {
+      "id": "lab:concept/post-training",
+      "type": "Concept",
+      "ko": "사후 훈련",
+      "en": "post-training"
+    },
+    {
+      "id": "lab:concept/reduced-orc",
+      "type": "Concept",
+      "ko": "that 빠진 관계절",
+      "en": "object relative clause without relativizer"
+    },
+    {
+      "id": "lab:concept/denominal-verb",
+      "type": "Concept",
+      "ko": "명사를 동사로",
+      "en": "denominal verb"
+    },
+    {
+      "id": "lab:concept/inanimate-subject",
+      "type": "Concept",
+      "ko": "사물이 사람처럼",
+      "en": "inanimate subject with animate verb"
+    },
+    {
+      "id": "lab:concept/stacked-nouns",
+      "type": "Concept",
+      "ko": "명사 기차",
+      "en": "stacked noun compounds"
+    },
+    {
+      "id": "lab:concept/dependency-length",
+      "type": "Concept",
+      "ko": "짝 거리",
+      "en": "dependency length"
+    },
+    {
+      "id": "lab:concept/unattested-ngram",
+      "type": "Concept",
+      "ko": "처음 보는 단어 짝",
+      "en": "unattested n-gram"
+    },
+    {
+      "id": "lab:metric/ngram-perplexity",
+      "type": "Metric",
+      "ko": "n-그램 퍼플렉서티",
+      "en": "trigram perplexity"
+    },
+    {
+      "id": "lab:metric/unattested-rate",
+      "type": "Metric",
+      "ko": "처음 보는 짝 비율",
+      "en": "unattested pairs per 1k"
+    },
+    {
+      "id": "lab:metric/std-dep-length",
+      "type": "Metric",
+      "ko": "표준화 짝 거리",
+      "en": "standardized dependency length"
+    },
+    {
+      "id": "lab:metric/short-share",
+      "type": "Metric",
+      "ko": "짧은 쪽 선택 비율",
+      "en": "share of short variant"
+    },
+    {
+      "id": "lab:metric/reading-time",
+      "type": "Metric",
+      "ko": "예상 읽기 시간 (설명용)",
+      "en": "expected reading time (toy)"
+    },
+    {
+      "id": "lab:method/dependency-parse",
+      "type": "Method",
+      "ko": "문장 해부 (의존 구문 분석)",
+      "en": "dependency parsing (spaCy)"
+    },
+    {
+      "id": "lab:method/round-trip",
+      "type": "Method",
+      "ko": "왕복 번역",
+      "en": "round-trip translation"
+    },
+    {
+      "id": "lab:method/human-baseline",
+      "type": "Method",
+      "ko": "사람 글 기준선",
+      "en": "human baseline"
+    },
+    {
+      "id": "lab:method/rlvr",
+      "type": "Method",
+      "ko": "채점형 강화학습",
+      "en": "reinforcement learning with verifiable rewards (RLVR)"
+    },
+    {
+      "id": "lab:method/rlhf",
+      "type": "Method",
+      "ko": "사람 피드백 강화학습",
+      "en": "RLHF"
+    },
+    {
+      "id": "lab:method/grpo",
+      "type": "Method",
+      "ko": "GRPO",
+      "en": "Group Relative Policy Optimization"
+    },
+    {
+      "id": "lab:method/length-penalty",
+      "type": "Method",
+      "ko": "글자 벌금 λ",
+      "en": "length penalty"
+    },
+    {
+      "id": "lab:method/kl-regularization",
+      "type": "Method",
+      "ko": "원래 말투 끈 β",
+      "en": "KL regularization"
+    },
+    {
+      "id": "lab:method/always-short",
+      "type": "Method",
+      "ko": "무조건 짧게 (주판봇)",
+      "en": "always choose the shorter form"
+    },
+    {
+      "id": "lab:method/context-choice",
+      "type": "Method",
+      "ko": "맥락 따라 고르기 (초파리)",
+      "en": "context-sensitive choice"
+    },
+    {
+      "id": "lab:dataset/chat",
+      "type": "Dataset",
+      "ko": "대화 말뭉치",
+      "en": "chat corpus"
+    },
+    {
+      "id": "lab:dataset/coding",
+      "type": "Dataset",
+      "ko": "코딩 말뭉치",
+      "en": "coding corpus"
+    },
+    {
+      "id": "lab:dataset/persuade",
+      "type": "Dataset",
+      "ko": "PERSUADE 2.0 에세이",
+      "en": "PERSUADE 2.0 essays"
+    },
+    {
+      "id": "lab:dataset/opensubtitles",
+      "type": "Dataset",
+      "ko": "영화 자막 (OpenSubtitles)",
+      "en": "OpenSubtitles"
+    },
+    {
+      "id": "lab:dataset/stackexchange",
+      "type": "Dataset",
+      "ko": "질문답변 사이트 (StackExchange)",
+      "en": "StackExchange"
+    },
+    {
+      "id": "lab:dataset/wikipedia",
+      "type": "Dataset",
+      "ko": "위키백과",
+      "en": "Wikipedia"
+    },
+    {
+      "id": "lab:dataset/alternations",
+      "type": "Dataset",
+      "ko": "같은 뜻 두 표현 문제",
+      "en": "JSON-to-sentence alternation task"
+    },
+    {
+      "id": "lab:claim/nine-frontier-two-features",
+      "type": "Claim",
+      "ko": "최신·준최신 9종 모두 사물 주어와 낯선 단어 짝이 사람 글보다 많다",
+      "en": "All nine frontier models overuse inanimate subjects and low-frequency n-grams vs human writing"
+    },
+    {
+      "id": "lab:claim/most-other-features",
+      "type": "Claim",
+      "ko": "대부분은 짝 거리·명사 기차·that 빠진 관계절도 대화에서 더 많다",
+      "en": "Most also use longer dependencies, more stacked nouns, more reduced ORCs in conversation"
+    },
+    {
+      "id": "lab:claim/roundtrip-overuse",
+      "type": "Claim",
+      "ko": "왕복 번역과 비교하면 낯선 단어 짝·명사 동사화·사물 주어·that 생략을 과하게 쓴다",
+      "en": "Frontier models over-use rare n-grams, denominal verbs, inanimate subjects and reduced ORCs relative to paraphrases"
+    },
+    {
+      "id": "lab:claim/essays-smaller",
+      "type": "Claim",
+      "ko": "에세이에서는 효과가 작다",
+      "en": "Effects are smaller for the essays"
+    },
+    {
+      "id": "lab:claim/olmo-grows",
+      "type": "Claim",
+      "ko": "Olmo는 기본 → 지시 → 추론 모델로 갈수록 효과가 커진다",
+      "en": "Within Olmo, effects grow from base to instruct to reasoning"
+    },
+    {
+      "id": "lab:claim/opus55-lower",
+      "type": "Claim",
+      "ko": "Opus 5.5는 Opus 5보다 21개 비교 중 19개에서 낮다",
+      "en": "Opus 5.5 is lower than Opus 5 in 19 of 21 comparisons"
+    },
+    {
+      "id": "lab:claim/length-penalty-shift",
+      "type": "Claim",
+      "ko": "글자 벌금을 주면 짧은 표현 쪽으로 옮겨 간다",
+      "en": "A length penalty shifts models toward shorter variants"
+    },
+    {
+      "id": "lab:claim/no-kl-98",
+      "type": "Claim",
+      "ko": "β=0이면 λ>0에서 that 교체 둘 다 98% 넘게 짧은 쪽",
+      "en": "Without KL, over 98% short for both trained that-alternations at every λ>0"
+    },
+    {
+      "id": "lab:claim/transfer",
+      "type": "Claim",
+      "ko": "배우지 않은 that 문장에도 번졌고, 먼 교체는 소유격 하나만 (β=0일 때)",
+      "en": "Near transfer consistent; far transfer only genitive without KL"
+    },
+    {
+      "id": "lab:claim/rlvr-hypothesis",
+      "type": "Claim",
+      "ko": "압축 압력은 사람 피드백보다 채점형 보상 훈련과 더 관련 있을 것이다 (가설)",
+      "en": "Compression pressure is more plausibly tied to verifiable-reward training"
+    },
+    {
+      "id": "lab:limitation/english-only",
+      "type": "Limitation",
+      "ko": "영어만 분석",
+      "en": "English only"
+    },
+    {
+      "id": "lab:limitation/few-seeds",
+      "type": "Limitation",
+      "ko": "대화 주제·저장소 수가 적음",
+      "en": "limited seeds and model families"
+    },
+    {
+      "id": "lab:limitation/proxy",
+      "type": "Limitation",
+      "ko": "최신 모델 훈련 과정을 직접 보지 못함",
+      "en": "proxy evidence only"
+    },
+    {
+      "id": "lab:limitation/categorical",
+      "type": "Limitation",
+      "ko": "맥락 무시",
+      "en": "context-insensitive choice"
+    },
+    {
+      "id": "lab:analogy/telegram",
+      "type": "Analogy",
+      "ko": "전보 요금",
+      "en": "telegram charged per word"
+    },
+    {
+      "id": "lab:analogy/gaejosik",
+      "type": "Analogy",
+      "ko": "개조식 보고서",
+      "en": "bullet-style Korean report"
+    },
+    {
+      "id": "lab:analogy/admin-nouns",
+      "type": "Analogy",
+      "ko": "행정 명사 나열",
+      "en": "Korean bureaucratic noun strings"
+    },
+    {
+      "id": "lab:analogy/translationese",
+      "type": "Analogy",
+      "ko": "번역투 사물 주어",
+      "en": "translationese inanimate subject"
+    },
+    {
+      "id": "lab:analogy/konglish-verb",
+      "type": "Analogy",
+      "ko": "외래 명사 + 하다",
+      "en": "Konglish denominal verb"
+    },
+    {
+      "id": "lab:analogy/long-modifier",
+      "type": "Analogy",
+      "ko": "긴 관형절",
+      "en": "long pre-nominal modifier"
+    },
+    {
+      "id": "lab:analogy/ending-drop",
+      "type": "Analogy",
+      "ko": "연결어미·접속어 생략",
+      "en": "dropped connectives"
+    }
+  ],
+  "works": [
+    {
+      "id": "clark2026why",
+      "title": "Why is AI-generated language so hard to understand?",
+      "year": 2026
+    },
+    {
+      "id": "gibson1998linguistic",
+      "title": "Linguistic complexity: Locality of syntactic dependencies",
+      "year": 1998
+    },
+    {
+      "id": "futrell2015large",
+      "title": "Large-scale evidence of dependency length minimization in 37 languages",
+      "year": 2015
+    },
+    {
+      "id": "levy2007speakers",
+      "title": "Speakers optimize information density through syntactic reduction",
+      "year": 2007
+    },
+    {
+      "id": "gibson2019efficiency",
+      "title": "How efficiency shapes human language",
+      "year": 2019
+    },
+    {
+      "id": "shao2024deepseekmath",
+      "title": "DeepSeekMath: Pushing the limits of mathematical reasoning in open language models",
+      "year": 2024
+    },
+    {
+      "id": "nllb2024scaling",
+      "title": "Scaling neural machine translation to 200 languages",
+      "year": 2024
+    },
+    {
+      "id": "crossley2024persuade",
+      "title": "A large-scale corpus for assessing written argumentation: Persuade 2.0",
+      "year": 2024
+    },
+    {
+      "id": "singhal2024long",
+      "title": "A long way to go: Investigating length correlations in RLHF",
+      "year": 2024
+    }
+  ]
+}
